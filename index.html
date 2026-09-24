@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas Card with Built-in Buttons</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f6f8;
+    }
+
+    /* Card Container */
+    .canvas-card {
+      width: 360px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Canvas Area */
+    .card-canvas {
+      width: 100%;
+      height: 200px;
+      background-color: #0f172a;
+      display: block;
+    }
+
+    /* Card Body Content */
+    .card-content {
+      padding: 16px;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 6px;
+    }
+
+    .card-description {
+      font-size: 0.9rem;
+      color: #64748b;
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    /* Actions / Buttons Container */
+    .card-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    /* Built-in Button Styles */
+    .btn {
+      flex: 1;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background-color: #2563eb;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: #1d4ed8;
+    }
+
+    .btn-secondary {
+      background-color: #f1f5f9;
+      color: #334155;
+    }
+
+    .btn-secondary:hover {
+      background-color: #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="canvas-card">
+    <!-- HTML5 Canvas -->
+    <canvas id="myCanvas" class="card-canvas" width="360" height="200"></canvas>
+    
+    <!-- Card Info & Controls -->
+    <div class="card-content">
+      <h3 class="card-title">Interactive Canvas Card</h3>
+      <p class="card-description">This card embeds an HTML5 canvas alongside built-in action buttons.</p>
+      
+      <div class="card-actions">
+        <button id="drawBtn" class="btn btn-primary">Draw Circle</button>
+        <button id="clearBtn" class="btn btn-secondary">Clear Canvas</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Draw initial state
+    function drawPlaceholder() {
+      ctx.fillStyle = '#1e293b';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '14px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Click "Draw Circle" to add graphics', canvas.width / 2, canvas.height / 2);
+    }
+
+    // Button event actions
+    document.getElementById('drawBtn').addEventListener('click', () => {
+      const x = Math.random() * (canvas.width - 40) + 20;
+      const y = Math.random() * (canvas.height - 40) + 20;
+      const radius = Math.random() * 20 + 10;
+      
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.fillStyle = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+      ctx.fill();
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', () => {
+      drawPlaceholder();
+    });
+
+    // Initialize canvas on load
+    drawPlaceholder();
+  </script>
+
+</body>
+</html>
