@@ -3,154 +3,277 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canvas Card with Built-in Buttons</title>
+  <title>KEMP EYE 👁 AI - Cymatics Card</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    :root {
+      --bg-color: #07080a;
+      --card-bg: #11131a;
+      --text-primary: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --accent-gold: #d4af37;
     }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      background-color: #f4f6f8;
-    }
-
-    /* Card Container */
-    .canvas-card {
-      width: 360px;
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Canvas Area */
-    .card-canvas {
-      width: 100%;
-      height: 200px;
-      background-color: #0f172a;
-      display: block;
-    }
-
-    /* Card Body Content */
-    .card-content {
       padding: 16px;
     }
-
-    .card-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #1e293b;
-      margin-bottom: 6px;
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--card-bg);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 24px;
+      padding: 26px 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+      text-align: center;
     }
-
-    .card-description {
-      font-size: 0.9rem;
-      color: #64748b;
-      line-height: 1.4;
+    .brand {
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+    .brand span { color: var(--accent-gold); }
+    .title {
+      font-size: 1.4rem;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+    canvas {
+      width: 100%;
+      height: 110px;
+      background: #000;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    .text-block {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+      text-align: justify;
       margin-bottom: 16px;
+      opacity: 0.88;
+      max-height: 120px;
+      overflow-y: auto;
+      padding-right: 4px;
     }
-
-    /* Actions / Buttons Container */
-    .card-actions {
+    .stress-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 10px;
+      margin-bottom: 14px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+    .stress-level {
+      color: var(--accent-gold);
+      font-weight: 600;
+    }
+    .actions {
       display: flex;
+      flex-direction: column;
       gap: 10px;
     }
-
-    /* Built-in Button Styles */
     .btn {
-      flex: 1;
-      padding: 10px 14px;
-      border: none;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      font-weight: 500;
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
       cursor: pointer;
-      transition: background-color 0.2s ease, transform 0.1s ease;
+      border: none;
+      transition: transform 0.1s ease, background 0.2s ease;
     }
-
-    .btn:active {
-      transform: scale(0.98);
+    .btn:active { transform: scale(0.98); }
+    .btn-cymatics {
+      background: linear-gradient(135deg, #d4af37, #9a7b26);
+      color: #07080a;
     }
-
-    .btn-primary {
-      background-color: #2563eb;
-      color: #ffffff;
+    .btn-snooze {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--text-secondary);
     }
-
-    .btn-primary:hover {
-      background-color: #1d4ed8;
+    .btn-download {
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      color: var(--accent-gold);
     }
-
-    .btn-secondary {
-      background-color: #f1f5f9;
-      color: #334155;
-    }
-
-    .btn-secondary:hover {
-      background-color: #e2e8f0;
+    .btn-share {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-primary);
     }
   </style>
 </head>
 <body>
-
-  <div class="canvas-card">
-    <!-- HTML5 Canvas -->
-    <canvas id="myCanvas" class="card-canvas" width="360" height="200"></canvas>
-    
-    <!-- Card Info & Controls -->
-    <div class="card-content">
-      <h3 class="card-title">Interactive Canvas Card</h3>
-      <p class="card-description">This card embeds an HTML5 canvas alongside built-in action buttons.</p>
-      
-      <div class="card-actions">
-        <button id="drawBtn" class="btn btn-primary">Draw Circle</button>
-        <button id="clearBtn" class="btn btn-secondary">Clear Canvas</button>
-      </div>
+  <div class="card">
+    <div class="brand">KEMP 👁 AI</div>
+    <h1 class="title">Cymatic Resonance</h1>
+    <canvas id="cymaticsCanvas"></canvas>
+    <div class="text-block">
+      The heart is beating. The body rests, fully held right where it sits, while the breath moves through the chest without a single command. With a warm palm resting flat against the chest, you meet the quiet intersection where this ongoing rhythm touches itself. Feel the steady drum beneath your hand, grounding every pulse in absolute stillness. There is no force required, no distant screens to chase—just the natural rise of your chest, the weight of your arm, and the breath coming in softly to fill the chamber beneath your palm. Let it go in a long, slow release dropping deep into the ground.
+    </div>
+    <div class="stress-box" id="stressBox">
+      System State: <span class="stress-level" id="stressState">Stable (Resting Baseline)</span>
+    </div>
+    <div class="actions">
+      <button id="cymaticsBtn" class="btn btn-cymatics">🖐️ Touch to Engage Cymatics</button>
+      <button id="downloadCardBtn" class="btn btn-download">📥 Download Card File</button>
+      <button id="snoozeBtn" class="btn btn-snooze">⏱️ Snooze Reminder (5m)</button>
+      <button id="shareFileBtn" class="btn btn-share">🔗 Share This Card</button>
     </div>
   </div>
 
   <script>
-    const canvas = document.getElementById('myCanvas');
+    const canvas = document.getElementById('cymaticsCanvas');
     const ctx = canvas.getContext('2d');
-
-    // Draw initial state
-    function drawPlaceholder() {
-      ctx.fillStyle = '#1e293b';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
-      ctx.fillStyle = '#94a3b8';
-      ctx.font = '14px sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('Click "Draw Circle" to add graphics', canvas.width / 2, canvas.height / 2);
+    
+    function resizeCanvas() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = 110;
     }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
-    // Button event actions
-    document.getElementById('drawBtn').addEventListener('click', () => {
-      const x = Math.random() * (canvas.width - 40) + 20;
-      const y = Math.random() * (canvas.height - 40) + 20;
-      const radius = Math.random() * 20 + 10;
-      
+    let phase = 0;
+    let activeResonance = false;
+
+    function drawCymatics() {
+      ctx.fillStyle = '#07080a';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.beginPath();
-      ctx.arc(x, y, radius, 0, Math.PI * 2);
-      ctx.fillStyle = `#${Math.floor(Math.random()*16777215).toString(16)}`;
-      ctx.fill();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = activeResonance ? '#d4af37' : '#334155';
+      const centerY = canvas.height / 2;
+      const amplitude = activeResonance ? 28 : 4;
+      const frequency = activeResonance ? 0.03 : 0.01;
+
+      for (let x = 0; x < canvas.width; x++) {
+        let y = centerY + Math.sin(x * frequency + phase) * amplitude * Math.sin(x * 0.015);
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+      phase += activeResonance ? 0.05 : 0.01;
+      requestAnimationFrame(drawCymatics);
+    }
+    drawCymatics();
+
+    let audioCtx = null;
+    let osc1 = null, osc2 = null, gainNode = null;
+    const cymaticsBtn = document.getElementById('cymaticsBtn');
+    const stressState = document.getElementById('stressState');
+
+    cymaticsBtn.addEventListener('click', async () => {
+      if (!activeResonance) {
+        try {
+          if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          }
+
+          if (audioCtx.state === 'suspended') {
+            await audioCtx.resume();
+          }
+
+          gainNode = audioCtx.createGain();
+          gainNode.gain.setValueAtTime(0.001, audioCtx.currentTime);
+          gainNode.gain.exponentialRampToValueAtTime(0.15, audioCtx.currentTime + 0.8);
+          gainNode.connect(audioCtx.destination);
+
+          osc1 = audioCtx.createOscillator();
+          osc1.type = 'sine';
+          osc1.frequency.setValueAtTime(138.1, audioCtx.currentTime);
+
+          osc2 = audioCtx.createOscillator();
+          osc2.type = 'triangle';
+          osc2.frequency.setValueAtTime(276.2, audioCtx.currentTime);
+
+          osc1.connect(gainNode);
+          osc2.connect(gainNode);
+
+          osc1.start();
+          osc2.start();
+
+          activeResonance = true;
+          cymaticsBtn.textContent = "⏹️ Stop Cymatics Soundscape";
+          stressState.textContent = "Harmonizing (138.1 Hz Active)";
+          stressState.style.color = "#4ade80";
+
+          if ('vibrate' in navigator) {
+            navigator.vibrate([100, 50, 150]);
+          }
+        } catch (err) {
+          console.error("Audio playback error:", err);
+          alert("Audio feature is blocked or unsupported by this browser.");
+        }
+      } else {
+        if (gainNode && audioCtx) {
+          gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.5);
+          setTimeout(() => {
+            try {
+              if (osc1) { osc1.stop(); osc1.disconnect(); }
+              if (osc2) { osc2.stop(); osc2.disconnect(); }
+            } catch (e) {}
+            
+            activeResonance = false;
+            cymaticsBtn.textContent = "🖐️ Touch to Engage Cymatics";
+            stressState.textContent = "Stable (Resting Baseline)";
+            stressState.style.color = "var(--accent-gold)";
+          }, 500);
+        }
+      }
     });
 
-    document.getElementById('clearBtn').addEventListener('click', () => {
-      drawPlaceholder();
+    document.getElementById('downloadCardBtn').addEventListener('click', () => {
+      const blob = new Blob([document.documentElement.outerHTML], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'kemp-card.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      stressState.textContent = "Card File Downloaded";
     });
 
-    // Initialize canvas on load
-    drawPlaceholder();
+    document.getElementById('snoozeBtn').addEventListener('click', () => {
+      const btn = document.getElementById('snoozeBtn');
+      btn.textContent = "✓ Paused for 5 Minutes";
+      stressState.textContent = "Snoozed / Standby Mode";
+      setTimeout(() => {
+        btn.textContent = "⏱️ Snooze Reminder (5m)";
+        stressState.textContent = "Ready to Recharge";
+      }, 5000);
+    });
+
+    document.getElementById('shareFileBtn').addEventListener('click', async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: 'KEMP EYE 👁 AI - Cymatics Card',
+            text: 'Open this offline card file to begin your session.',
+            url: window.location.href
+          });
+        } catch (err) {}
+      } else {
+        navigator.clipboard.writeText(window.location.href);
+        alert('Sharing link copied to clipboard.');
+      }
+    });
   </script>
-
 </body>
 </html>
