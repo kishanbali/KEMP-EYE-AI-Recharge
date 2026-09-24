@@ -1,279 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KEMP EYE 👁 AI - Cymatics Card</title>
-  <style>
-    :root {
-      --bg-color: #07080a;
-      --card-bg: #11131a;
-      --text-primary: #e2e8f0;
-      --text-secondary: #94a3b8;
-      --accent-gold: #d4af37;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-primary);
-      font-family: system-ui, -apple-system, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 16px;
-    }
-    .card {
-      width: 100%;
-      max-width: 420px;
-      background: var(--card-bg);
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      border-radius: 24px;
-      padding: 26px 20px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
-      text-align: center;
-    }
-    .brand {
-      font-size: 0.75rem;
-      letter-spacing: 4px;
-      color: var(--text-secondary);
-      margin-bottom: 4px;
-      text-transform: uppercase;
-    }
-    .brand span { color: var(--accent-gold); }
-    .title {
-      font-size: 1.4rem;
-      color: var(--text-primary);
-      margin-bottom: 14px;
-      font-weight: 300;
-      letter-spacing: 1px;
-    }
-    canvas {
-      width: 100%;
-      height: 110px;
-      background: #000;
-      border-radius: 12px;
-      margin-bottom: 14px;
-      border: 1px solid rgba(212, 175, 55, 0.2);
-    }
-    .text-block {
-      font-size: 0.85rem;
-      line-height: 1.7;
-      color: var(--text-primary);
-      text-align: justify;
-      margin-bottom: 16px;
-      opacity: 0.88;
-      max-height: 120px;
-      overflow-y: auto;
-      padding-right: 4px;
-    }
-    .stress-box {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      padding: 10px;
-      margin-bottom: 14px;
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-    }
-    .stress-level {
-      color: var(--accent-gold);
-      font-weight: 600;
-    }
-    .actions {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .btn {
-      width: 100%;
-      padding: 12px;
-      border-radius: 12px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      cursor: pointer;
-      border: none;
-      transition: transform 0.1s ease, background 0.2s ease;
-    }
-    .btn:active { transform: scale(0.98); }
-    .btn-cymatics {
-      background: linear-gradient(135deg, #d4af37, #9a7b26);
-      color: #07080a;
-    }
-    .btn-snooze {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: var(--text-secondary);
-    }
-    .btn-download {
-      background: rgba(212, 175, 55, 0.15);
-      border: 1px solid rgba(212, 175, 55, 0.4);
-      color: var(--accent-gold);
-    }
-    .btn-share {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: var(--text-primary);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palm Recharge 2 - Harmonic Alignment</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #0d0f1a;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .card {
+            background: linear-gradient(180deg, #181c2e 0%, #0d0f1a 100%);
+            border: 1px solid #2a324d;
+            border-radius: 16px;
+            max-width: 450px;
+            width: 100%;
+            padding: 30px 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+        h1 {
+            font-size: 26px;
+            letter-spacing: 2px;
+            color: #e2e8f0;
+            margin-bottom: 6px;
+        }
+        .subtitle {
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .visual-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, rgba(0,0,0,0) 70%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .silhouete {
+            width: 120px;
+            opacity: 0.85;
+        }
+        .description {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+        }
+        .audio-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+        .audio-title {
+            font-size: 13px;
+            letter-spacing: 1px;
+            color: #a7f3d0;
+            margin-bottom: 12px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+        .btn {
+            background-color: #6366f1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn:hover {
+            background-color: #4f46e5;
+        }
+        .btn-stop {
+            background-color: #ef4444;
+        }
+        .btn-stop:hover {
+            background-color: #dc2626;
+        }
+        .footnotes {
+            border-top: 1px solid #1e293b;
+            padding-top: 16px;
+            font-size: 12px;
+            color: #64748b;
+            text-align: left;
+            line-height: 1.6;
+        }
+        .footnotes a {
+            color: #38bdf8;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .footnotes a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-  <div class="card">
-    <div class="brand">KEMP 👁 AI</div>
-    <h1 class="title">Cymatic Resonance</h1>
-    <canvas id="cymaticsCanvas"></canvas>
-    <div class="text-block">
-      The heart is beating. The body rests, fully held right where it sits, while the breath moves through the chest without a single command. With a warm palm resting flat against the chest, you meet the quiet intersection where this ongoing rhythm touches itself. Feel the steady drum beneath your hand, grounding every pulse in absolute stillness. There is no force required, no distant screens to chase—just the natural rise of your chest, the weight of your arm, and the breath coming in softly to fill the chamber beneath your palm. Let it go in a long, slow release dropping deep into the ground.
+
+<div class="card">
+    <h1>PALM RECHARGE 2</h1>
+    <div class="subtitle">Harmonic Alignment</div>
+
+    <div class="visual-container">
+        <!-- SVG Resonance Line Illustration -->
+        <svg width="200" height="100" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 50 Q 25 20, 50 50 T 100 50 T 150 50 T 200 50" stroke="#818cf8" stroke-width="2" fill="none"/>
+            <circle cx="100" cy="50" r="6" fill="#a7f3d0"/>
+        </svg>
     </div>
-    <div class="stress-box" id="stressBox">
-      System State: <span class="stress-level" id="stressState">Stable (Resting Baseline)</span>
+
+    <div class="description">
+        Tune into inner stillness.<br>
+        AI-Generated 138.1 Hz Harmonic Resonance.
     </div>
-    <div class="actions">
-      <button id="cymaticsBtn" class="btn btn-cymatics">🖐️ Touch to Engage Cymatics</button>
-      <button id="downloadCardBtn" class="btn btn-download">📥 Download Card File</button>
-      <button id="snoozeBtn" class="btn btn-snooze">⏱️ Snooze Reminder (5m)</button>
-      <button id="shareFileBtn" class="btn btn-share">🔗 Share This Card</button>
+
+    <div class="audio-section">
+        <div class="audio-title">🎧 RECOMMENDED HEADPHONE LISTENING</div>
+        <div class="btn-group">
+            <button class="btn" onclick="playTone()">▶ Play 138.1 Hz</button>
+            <button class="btn btn-stop" onclick="stopTone()">⏹ Stop Audio</button>
+        </div>
     </div>
-  </div>
 
-  <script>
-    const canvas = document.getElementById('cymaticsCanvas');
-    const ctx = canvas.getContext('2d');
-    
-    function resizeCanvas() {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = 110;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    <div class="footnotes">
+        <p><strong>Footnotes & Details:</strong></p>
+        <p>©2026 KishanBali / KEMP Wisdom Publications. All rights reserved.</p>
+        <p><em>Disclaimer:</em> This AI-generated 138.1 Hz audio is for educational and experimental purposes and does not constitute medical advice. Listen responsibly.</p>
+        <p style="margin-top: 8px;">
+            <strong>WhatsApp Group:</strong><br>
+            <a href="https://chat.whatsapp.com/BiuWy6NVFboGHGqt4mKBSM" target="_blank" rel="noopener">Join WhatsApp Community</a>
+        </p>
+        <p style="margin-top: 6px;">
+            <strong>Web App Access:</strong><br>
+            <a href="https://kishanbali.github.io/Palm-Recharge/" target="_blank" rel="noopener">https://kishanbali.github.io/Palm-Recharge/</a>
+        </p>
+    </div>
+</div>
 
-    let phase = 0;
-    let activeResonance = false;
-
-    function drawCymatics() {
-      ctx.fillStyle = '#07080a';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.beginPath();
-      ctx.lineWidth = 2;
-      ctx.strokeStyle = activeResonance ? '#d4af37' : '#334155';
-      const centerY = canvas.height / 2;
-      const amplitude = activeResonance ? 28 : 4;
-      const frequency = activeResonance ? 0.03 : 0.01;
-
-      for (let x = 0; x < canvas.width; x++) {
-        let y = centerY + Math.sin(x * frequency + phase) * amplitude * Math.sin(x * 0.015);
-        if (x === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
-      }
-      ctx.stroke();
-      phase += activeResonance ? 0.05 : 0.01;
-      requestAnimationFrame(drawCymatics);
-    }
-    drawCymatics();
-
+<script>
     let audioCtx = null;
-    let osc1 = null, osc2 = null, gainNode = null;
-    const cymaticsBtn = document.getElementById('cymaticsBtn');
-    const stressState = document.getElementById('stressState');
+    let oscillator = null;
 
-    cymaticsBtn.addEventListener('click', async () => {
-      if (!activeResonance) {
-        try {
-          if (!audioCtx) {
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-          }
+    function playTone() {
+        if (oscillator) stopTone(); // Stop if already playing
 
-          if (audioCtx.state === 'suspended') {
-            await audioCtx.resume();
-          }
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        oscillator = audioCtx.createOscillator();
+        
+        // Pure sine wave set to exact 138.1 Hz frequency
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(138.1, audioCtx.currentTime);
+        
+        // Gentle gain to protect hearing
+        const gainNode = audioCtx.createGain();
+        gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
 
-          gainNode = audioCtx.createGain();
-          gainNode.gain.setValueAtTime(0.001, audioCtx.currentTime);
-          gainNode.gain.exponentialRampToValueAtTime(0.15, audioCtx.currentTime + 0.8);
-          gainNode.connect(audioCtx.destination);
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        
+        oscillator.start();
+    }
 
-          osc1 = audioCtx.createOscillator();
-          osc1.type = 'sine';
-          osc1.frequency.setValueAtTime(138.1, audioCtx.currentTime);
-
-          osc2 = audioCtx.createOscillator();
-          osc2.type = 'triangle';
-          osc2.frequency.setValueAtTime(276.2, audioCtx.currentTime);
-
-          osc1.connect(gainNode);
-          osc2.connect(gainNode);
-
-          osc1.start();
-          osc2.start();
-
-          activeResonance = true;
-          cymaticsBtn.textContent = "⏹️ Stop Cymatics Soundscape";
-          stressState.textContent = "Harmonizing (138.1 Hz Active)";
-          stressState.style.color = "#4ade80";
-
-          if ('vibrate' in navigator) {
-            navigator.vibrate([100, 50, 150]);
-          }
-        } catch (err) {
-          console.error("Audio playback error:", err);
-          alert("Audio feature is blocked or unsupported by this browser.");
+    function stopTone() {
+        if (oscillator) {
+            oscillator.stop();
+            oscillator.disconnect();
+            oscillator = null;
         }
-      } else {
-        if (gainNode && audioCtx) {
-          gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.5);
-          setTimeout(() => {
-            try {
-              if (osc1) { osc1.stop(); osc1.disconnect(); }
-              if (osc2) { osc2.stop(); osc2.disconnect(); }
-            } catch (e) {}
-            
-            activeResonance = false;
-            cymaticsBtn.textContent = "🖐️ Touch to Engage Cymatics";
-            stressState.textContent = "Stable (Resting Baseline)";
-            stressState.style.color = "var(--accent-gold)";
-          }, 500);
+        if (audioCtx) {
+            audioCtx.close();
+            audioCtx = null;
         }
-      }
-    });
+    }
+</script>
 
-    document.getElementById('downloadCardBtn').addEventListener('click', () => {
-      const blob = new Blob([document.documentElement.outerHTML], { type: 'text/html' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'kemp-card.html';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      stressState.textContent = "Card File Downloaded";
-    });
-
-    document.getElementById('snoozeBtn').addEventListener('click', () => {
-      const btn = document.getElementById('snoozeBtn');
-      btn.textContent = "✓ Paused for 5 Minutes";
-      stressState.textContent = "Snoozed / Standby Mode";
-      setTimeout(() => {
-        btn.textContent = "⏱️ Snooze Reminder (5m)";
-        stressState.textContent = "Ready to Recharge";
-      }, 5000);
-    });
-
-    document.getElementById('shareFileBtn').addEventListener('click', async () => {
-      if (navigator.share) {
-        try {
-          await navigator.share({
-            title: 'KEMP EYE 👁 AI - Cymatics Card',
-            text: 'Open this offline card file to begin your session.',
-            url: window.location.href
-          });
-        } catch (err) {}
-      } else {
-        navigator.clipboard.writeText(window.location.href);
-        alert('Sharing link copied to clipboard.');
-      }
-    });
-  </script>
 </body>
 </html>
